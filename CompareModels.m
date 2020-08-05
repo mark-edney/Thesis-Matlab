@@ -49,8 +49,8 @@ xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter'
 ylabel('$E(\theta )$','Interpreter','Latex');
 legend("RTD",string1,string2);
 ylim([0 2]);
-saveas(gcf,'\Thesis\Writing\pic\resultsideal','epsc')
-saveas(gcf,'\Thesis\Writing\pic\resultsideal','png')
+saveas(gcf,'pic\resultsideal','epsc')
+saveas(gcf,'pic\resultsideal','png')
 
 figure;
 hold on;
@@ -66,8 +66,8 @@ xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter'
 ylabel('$E(\theta )$','Interpreter','Latex');
 legend;
 ylim([0 2]);
-saveas(gcf,'\Thesis\Writing\pic\resultsreal','epsc')
-saveas(gcf,'\Thesis\Writing\pic\resultsreal','png')
+saveas(gcf,'pic\resultsreal','epsc')
+saveas(gcf,'pic\resultsreal','png')
 
 figure;
 hold on;
@@ -81,8 +81,8 @@ xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter'
 ylabel('$E(\theta )$','Interpreter','Latex');
 legend;
 ylim([0 2]);
-saveas(gcf,'\Thesis\Writing\pic\resultsreal2','epsc')
-saveas(gcf,'\Thesis\Writing\pic\resultsreal2','png')
+saveas(gcf,'pic\resultsreal2','epsc')
+saveas(gcf,'pic\resultsreal2','png')
 
 error=[EC EP Edmin Edopmin Ecmin Egmin EE];
 ModelP=[ndmin,ndopmin,ncmin,ngmin,eNmin,enmin,eMmin];
