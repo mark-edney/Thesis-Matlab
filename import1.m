@@ -26,7 +26,7 @@ opts = setvaropts(opts, "Var6", "WhitespaceRule", "preserve");
 opts = setvaropts(opts, "Var6", "EmptyFieldRule", "auto");
 
 % Import the data
-ConductivitySensorslogfile = readtable("D:\Thesis\Experiment\Trial 12\Conductivity Sensors log file.lvm", opts);
+ConductivitySensorslogfile = readtable("Experiment\Trial 12\Conductivity Sensors log file.lvm", opts);
 
 %% Convert to output type
 ConductivitySensorslogfile = table2array(ConductivitySensorslogfile);
