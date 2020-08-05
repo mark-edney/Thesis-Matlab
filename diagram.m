@@ -18,8 +18,8 @@ set(gca,'XTick',[])
 title('Idealized CSTR RTD','FontSize',20)
 xlabel({'Time'},'FontSize',20)
 ylabel({'E(t)'},'FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\ideal_cstr_et','epsc')
-saveas(gcf,'\Thesis\Writing\pic\ideal_cstr_et','png')
+saveas(gcf,'pic\ideal_cstr_et','epsc')
+saveas(gcf,'pic\ideal_cstr_et','png')
 
 figure
 plot(x,y2,'LineWidth',2.5);
@@ -28,8 +28,8 @@ set(gca,'XTick',[])
 title('Idealized CSTR RTD','FontSize',20)
 xlabel({'Time'},'FontSize',20)
 ylabel({'F(t)'},'FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\ideal_cstr_ft','epsc')
-saveas(gcf,'\Thesis\Writing\pic\ideal_cstr_ft','png')
+saveas(gcf,'pic\ideal_cstr_ft','epsc')
+saveas(gcf,'pic\ideal_cstr_ft','png')
 
 figure
 plot(x2,y,'LineWidth',2.5);
@@ -38,8 +38,8 @@ set(gca,'XTick',[])
 title('Idealized PFR RTD','FontSize',20)
 xlabel({'Time'},'FontSize',20)
 ylabel({'E(t)'},'FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\ideal_pfr_et','epsc')
-saveas(gcf,'\Thesis\Writing\pic\ideal_pfr_et','png')
+saveas(gcf,'pic\ideal_pfr_et','epsc')
+saveas(gcf,'pic\ideal_pfr_et','png')
 
 figure
 plot(x2,yf,'LineWidth',2.5);
@@ -48,8 +48,8 @@ set(gca,'XTick',[])
 title('Idealized PFR RTD','FontSize',20)
 xlabel({'Time'},'FontSize',20)
 ylabel({'F(t)'},'FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\ideal_pfr_ft','epsc')
-saveas(gcf,'\Thesis\Writing\pic\ideal_pfr_ft','png')
+saveas(gcf,'pic\ideal_pfr_ft','epsc')
+saveas(gcf,'pic\ideal_pfr_ft','png')
 
 figure
 d=linspace(0,0.5,10);
@@ -72,8 +72,8 @@ string9=sprintf('D=%0.2d',d(9));
 string10=sprintf('D=%0.2d',d(10));
 lgd=legend(string1,string2,string3,string4,string5,string6,string7,string8,string9,string10);
 title(lgd,'Dispersion Coefficent')
-saveas(gcf,'\Thesis\Writing\pic\dispersion','epsc')
-saveas(gcf,'\Thesis\Writing\pic\dispersion','png')
+saveas(gcf,'pic\dispersion','epsc')
+saveas(gcf,'pic\dispersion','png')
 
 figure
 d=[20,10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.01];
@@ -96,8 +96,8 @@ string9=sprintf('D=%0.2d',d(9));
 string10=sprintf('D=%0.2d',d(10));
 lgd=legend(string1,string2,string3,string4,string5,string6,string7,string8,string9,string10);
 title(lgd,'Dispersion Coefficent')
-saveas(gcf,'\Thesis\Writing\pic\dispop','epsc')
-saveas(gcf,'\Thesis\Writing\pic\dispop','png')
+saveas(gcf,'pic\dispop','epsc')
+saveas(gcf,'pic\dispop','png')
 
 figure
 n=1:2:20;
@@ -120,8 +120,8 @@ string9=sprintf('N=%0.2d',n(9));
 string10=sprintf('N=%0.2d',n(10));
 lgd=legend(string1,string2,string3,string4,string5,string6,string7,string8,string9,string10);
 title(lgd,'Number of CSTRs in series')
-saveas(gcf,'\Thesis\Writing\pic\cstrs','epsc')
-saveas(gcf,'\Thesis\Writing\pic\cstrs','png')
+saveas(gcf,'pic\cstrs','epsc')
+saveas(gcf,'pic\cstrs','png')
 
 figure
 n=[linspace(0.1,3,10)];
@@ -145,8 +145,8 @@ string9=sprintf('N=%0.2d',n(9));
 string10=sprintf('N=%0.2d',n(10));
 lgd=legend(string1,string2,string3,string4,string5,string6,string7,string8,string9,string10);
 title(lgd,'Number of CSTRs in series')
-saveas(gcf,'\Thesis\Writing\pic\genncstrs','epsc')
-saveas(gcf,'\Thesis\Writing\pic\genncstrs','png')
+saveas(gcf,'pic\genncstrs','epsc')
+saveas(gcf,'pic\genncstrs','png')
 
 figure
 x=0:.01:.25;
@@ -173,8 +173,8 @@ title('ECSTRs Model(n=1,N=2)','FontSize',20)
 xlabel({'Time'},'FontSize',20)
 ylabel({'M(0-1)'},'FontSize',20)
 zlabel({'Model value'},'FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\ecstrssetn','epsc')
-saveas(gcf,'\Thesis\Writing\pic\ecstrssetn','png')
+saveas(gcf,'pic\ecstrssetn','epsc')
+saveas(gcf,'pic\ecstrssetn','png')
 
 figure
 x=0:.01:.25;
@@ -201,8 +201,8 @@ title('Enhanced CSTRs in series Model(M=1,N=2)','FontSize',20)
 xlabel({'Time'},'FontSize',20)
 ylabel({'n(0-1)'},'FontSize',20)
 zlabel({'Model value'},'FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\ecstrssetM','epsc')
-saveas(gcf,'\Thesis\Writing\pic\ecstrssetM','png')
+saveas(gcf,'pic\ecstrssetM','epsc')
+saveas(gcf,'pic\ecstrssetM','png')
 
 import8;
 Code;
@@ -210,8 +210,8 @@ plot(time,cond(:,1))
 title('Conductivity for sensor #1','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity(\mu S)'},'FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\sample_cond','epsc')
-saveas(gcf,'\Thesis\Writing\pic\sample_cond','png')
+saveas(gcf,'pic\sample_cond','epsc')
+saveas(gcf,'pic\sample_cond','png')
 
 figure;
 hold on;
@@ -221,16 +221,16 @@ fitplot(2).LineWidth=2.5;
 title('Conductivity for sensor #1','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity($\mu$ S)'},'Interpreter','Latex','FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\sample_lm','epsc')
-saveas(gcf,'\Thesis\Writing\pic\sample_lm','png')
+saveas(gcf,'pic\sample_lm','epsc')
+saveas(gcf,'pic\sample_lm','png')
 
 figure;
 plot(time,conf(:,1),'LineWidth',2.5)
 title('Transformed Sensor #1','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity(\mu S)'},'FontSize',20)
-saveas(gcf,'\Thesis\Writing\pic\sample_conf','epsc')
-saveas(gcf,'\Thesis\Writing\pic\sample_conf','png')
+saveas(gcf,'pic\sample_conf','epsc')
+saveas(gcf,'pic\sample_conf','png')
 function y=dd(x,tau)
 y=0;
 if x==tau
