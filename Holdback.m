@@ -23,8 +23,8 @@ xline(1,'LineWidth',2.5);
 yline(1,'LineWidth',2.5);
 ylim([0 1.15])
 legend('Hold-back (H)','Reactor','Interpreter','Latex')
-saveas(gcf,'\Thesis\Writing\pic\holdback','epsc')
-saveas(gcf,'\Thesis\Writing\pic\holdback','png')
+saveas(gcf,'pic\holdback','epsc')
+saveas(gcf,'pic\holdback','png')
 
 %Code for find segregation quantity s
 
@@ -51,8 +51,8 @@ xline(1,'LineWidth',2.5);
 yline(1,'LineWidth',2.5);
 legend('Reactor','CSTR','Segregation (S)','Interpreter','Latex')
 S=-sum(abs(trapz(x(R),cstr(x(R)))-trapz(x(R),ftt(R))))
-saveas(gcf,'\Thesis\Writing\pic\Segs','epsc')
-saveas(gcf,'\Thesis\Writing\pic\Segs','png')
+saveas(gcf,'pic\Segs','epsc')
+saveas(gcf,'pic\Segs','png')
 
 %zoom in to the plot to show that the system proceeds the cstr
 figure;
@@ -64,5 +64,5 @@ xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter'
 ylabel('$F(\theta )$','Interpreter','Latex');
 xlim([0 0.5]);
 legend('Reactor','CSTR','Interpreter','Latex')
-saveas(gcf,'\Thesis\Writing\pic\Segs2','epsc')
-saveas(gcf,'\Thesis\Writing\pic\Segs2','png')
+saveas(gcf,'pic\Segs2','epsc')
+saveas(gcf,'pic\Segs2','png')
