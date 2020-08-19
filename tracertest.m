@@ -1,3 +1,5 @@
+%This script compares the different trials run against each other
+
 clear;
 close all;
 tic
