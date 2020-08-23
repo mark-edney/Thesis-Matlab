@@ -9,5 +9,5 @@ plot (lm);
 
 ylabel(["Concentration NaCl"; "g/L"],'FontSize',16)
 xlabel(["Conductivity";"\muS/cm"],'Interpreter','tex','FontSize',16)
-title("Concentraion of NaCl solution vs. Conductivity",'FontSize',16)
+title("Concentration of NaCl solution vs. Conductivity",'FontSize',16)
 
