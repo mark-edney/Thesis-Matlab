@@ -27,16 +27,16 @@ plot(time,cond(:,4));
 title('STAR overall');
 xlabel({'Time(hr)'})
 ylabel({'Conductivity(\muS)'})
-saveas(gcf,'\Thesis\Writing\pic\rawdata','epsc')
-saveas(gcf,'\Thesis\Writing\pic\rawdata','png')
+saveas(gcf,'pic\rawdata','epsc')
+saveas(gcf,'pic\rawdata','png')
 
 figure;
 plot(theta(:,4),ett(:,4),'LineWidth',2.5);
-title('RTD STAR reactor','FontSize',20)
+title('RTD STAR Reactor','FontSize',20)
 xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
 ylabel('$E(\theta )$','Interpreter','Latex');
-saveas(gcf,'\Thesis\Writing\pic\etheta4','epsc')
-saveas(gcf,'\Thesis\Writing\pic\etheta4','png')
+saveas(gcf,'pic\etheta4','epsc')
+saveas(gcf,'pic\etheta4','png')
 
 a1=0.2323;
 a2=1.276;
@@ -75,5 +75,5 @@ plot(theta(:,4),ett(:,4));
 title('STAR overall');
 xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
 ylabel('$E(\theta )$','Interpreter','Latex');
-saveas(gcf,'\Thesis\Writing\pic\4paneltheta','epsc')
-saveas(gcf,'\Thesis\Writing\pic\4paneltheta','png')
+saveas(gcf,'pic\4paneltheta','epsc')
+saveas(gcf,'pic\4paneltheta','png')

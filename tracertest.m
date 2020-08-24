@@ -36,11 +36,11 @@ hold on;
 plot(time1,conf1,'LineWidth',2.5);
 plot(time2,conf2,'LineWidth',2.5);
 plot(time3,conf3,'LineWidth',2.5);
-title('RTD trial comparision','FontSize',20);
+title('RTD Trial Comparision','FontSize',20);
 xlabel({'Time(hrs)'},'FontSize',20)
 ylabel('E(t)');
-saveas(gcf,'\Thesis\Writing\pic\tracertest','epsc')
-saveas(gcf,'\Thesis\Writing\pic\tracertest','png')
+saveas(gcf,'pic\tracertest','epsc')
+saveas(gcf,'pic\tracertest','png')
 legend('Trial 1','Trial 2', 'Trial 3');
 
 T3=table([Tavg(4,:)';mean(Tavg(4,:))],[TVar(4,:)';mean(TVar(4,:))],'VariableNames',{'Mean Residence Time','Variance'})

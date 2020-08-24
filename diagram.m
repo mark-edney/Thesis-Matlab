@@ -207,7 +207,7 @@ saveas(gcf,'pic\ecstrssetM','png')
 import8;
 Code;
 plot(time,cond(:,1))
-title('Conductivity for sensor #1','FontSize',20)
+title('Conductivity for Sensor #1','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity(\mu S)'},'FontSize',20)
 saveas(gcf,'pic\sample_cond','epsc')
@@ -218,7 +218,7 @@ hold on;
 plot(time,cond(:,1))
 fitplot=plot(minv1);
 fitplot(2).LineWidth=2.5;
-title('Conductivity for sensor #1','FontSize',20)
+title('Conductivity for Sensor #1','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity($\mu$ S)'},'Interpreter','Latex','FontSize',20)
 saveas(gcf,'pic\sample_lm','epsc')
