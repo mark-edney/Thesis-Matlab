@@ -42,6 +42,14 @@ saveas(gcf,'pic\ideal_pfr_et','epsc')
 saveas(gcf,'pic\ideal_pfr_et','png')
 
 figure
+plot(x2,y,'LineWidth',2.5);
+set(gca,'YTick',[])
+set(gca,'XTick',[])
+title('Pulse Signal','FontSize',20)
+xlabel({'Time'},'FontSize',20)
+ylabel({'E(t)'},'FontSize',20)
+
+figure
 plot(x2,yf,'LineWidth',2.5);
 set(gca,'YTick',[])
 set(gca,'XTick',[])
@@ -50,6 +58,15 @@ xlabel({'Time'},'FontSize',20)
 ylabel({'F(t)'},'FontSize',20)
 saveas(gcf,'pic\ideal_pfr_ft','epsc')
 saveas(gcf,'pic\ideal_pfr_ft','png')
+
+figure
+plot(x2,yf,'LineWidth',2.5);
+set(gca,'YTick',[])
+set(gca,'XTick',[])
+title('Step Signal','FontSize',20)
+xlabel({'Time'},'FontSize',20)
+ylabel({'E(t)'},'FontSize',20)
+
 
 figure
 d=linspace(0,0.5,10);
@@ -204,10 +221,10 @@ zlabel({'Model value'},'FontSize',20)
 saveas(gcf,'pic\ecstrssetM','epsc')
 saveas(gcf,'pic\ecstrssetM','png')
 
-import8;
+import11;
 Code;
 plot(time,cond(:,1))
-title('Conductivity for Sensor #1','FontSize',20)
+title('Conductivity for Sensor #4','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity(\mu S)'},'FontSize',20)
 saveas(gcf,'pic\sample_cond','epsc')
@@ -215,23 +232,41 @@ saveas(gcf,'pic\sample_cond','png')
 
 figure;
 hold on;
-plot(time,cond(:,1))
+plot(time,cond(:,4))
 fitplot=plot(minv1);
 fitplot(2).LineWidth=2.5;
-title('Conductivity for Sensor #1','FontSize',20)
+title('Conductivity for Sensor #4','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity($\mu$ S)'},'Interpreter','Latex','FontSize',20)
 saveas(gcf,'pic\sample_lm','epsc')
 saveas(gcf,'pic\sample_lm','png')
 
 figure;
-plot(time,conf(:,1),'LineWidth',2.5)
-title('Transformed Sensor #1','FontSize',20)
+plot(time,conf(:,4),'LineWidth',2.5)
+title('Transformed Sensor #4','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity(\mu S)'},'FontSize',20)
 saveas(gcf,'pic\sample_conf','epsc')
 saveas(gcf,'pic\sample_conf','png')
+
+figure;
+plot(time,et(:,4),'LineWidth',2.5)
+title('E(t) Sensor #1','FontSize',20)
+xlabel({'Time(hr)'},'FontSize',20)
+ylabel({'E (t)'},'FontSize',20)
+saveas(gcf,'pic\sample_et','epsc')
+saveas(gcf,'pic\sample_et','png')
+
+figure;
+plot(theta(:,4),ett(:,4),'LineWidth',2.5)
+title('E (\theta ) Sensor #4','FontSize',20)
+xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
+ylabel('$E(\theta )$','Interpreter','Latex');
+saveas(gcf,'pic\sample_ett','epsc')
+saveas(gcf,'pic\sample_ett','png')
+
 function y=dd(x,tau)
+
 y=0;
 if x==tau
     y=1/tau;

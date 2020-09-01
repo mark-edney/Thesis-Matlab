@@ -9,7 +9,18 @@ x=theta(:,4);
 ftt=cumtrapz(x,ett(:,4));
 hold on;
 
+%Plot F(theta)
+plot(x,ftt,'LineWidth',2.5);
+yline(1,'LineWidth',2.5);
+ylim([0 1.15])
+title('F (\theta) for sensor #4','FontSize',20);
+xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
+ylabel('$F(\theta )$','Interpreter','Latex');
+saveas(gcf,'pic\ftt','epsc')
+saveas(gcf,'pic\ft','png')
+
 %finds the holdback H
+figure;
 up=find(x>1);
 newx=x(1:up);
 H=trapz(newx,ftt(1:up));
@@ -21,7 +32,7 @@ xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter'
 ylabel('$F(\theta )$','Interpreter','Latex');
 xline(1,'LineWidth',2.5);
 yline(1,'LineWidth',2.5);
-ylim([0 1.15])
+ylim([0 1.15]);
 legend('Hold-back (H)','Reactor','Interpreter','Latex')
 saveas(gcf,'pic\holdback','epsc')
 saveas(gcf,'pic\holdback','png')
@@ -44,7 +55,7 @@ plot(x,cstr(x),'LineWidth',2.5);
 title('Segregation Quantity (S)','FontSize',20);
 xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
 ylabel('$F(\theta )$','Interpreter','Latex');
-ylim([0 1.15])
+ylim([0 1.15]);
 inBetween = [ftt(R), cstr(x(R))]
 A=fill(x(R),inBetween,'cyan');
 xline(1,'LineWidth',2.5);
@@ -66,3 +77,16 @@ xlim([0 0.5]);
 legend('Reactor','CSTR','Interpreter','Latex')
 saveas(gcf,'pic\Segs2','epsc')
 saveas(gcf,'pic\Segs2','png')
+
+figure;
+diseg=makedist('Gamma','a',1,'b',1)
+y=cdf(diseg,x);
+plot(x,y,'LineWidth',2.5);
+plot(x,cstr(x),'LineWidth',2.5);
+title('Segregation Quantity (S)','FontSize',20);
+xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
+ylabel('$F(\theta )$','Interpreter','Latex');
+ylim([0 1.15])
+xline(1,'LineWidth',2.5);
+yline(1,'LineWidth',2.5);
+legend('Reactor','CSTR','Segregation (S)','Interpreter','Latex')
