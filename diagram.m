@@ -22,6 +22,19 @@ saveas(gcf,'pic\ideal_cstr_et','epsc')
 saveas(gcf,'pic\ideal_cstr_et','png')
 
 figure
+hold on;
+plot(x,y1,'LineWidth',2.5);
+plot(x2,y,'LineWidth',2.5);
+set(gca,'YTick',[])
+set(gca,'XTick',[])
+title('Idealized Reactors RTD','FontSize',20)
+legend('Ideal CSTR','Ideal PFR');
+xlabel({'Time'},'FontSize',20)
+ylabel({'E(t)'},'FontSize',20)
+saveas(gcf,'pic\ideals','epsc')
+saveas(gcf,'pic\ideals','png')
+
+figure
 plot(x,y2,'LineWidth',2.5);
 set(gca,'YTick',[])
 set(gca,'XTick',[])
