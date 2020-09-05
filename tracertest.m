@@ -39,9 +39,13 @@ plot(time3,conf3,'LineWidth',2.5);
 title('RTD Trial Comparision','FontSize',20);
 xlabel({'Time(hrs)'},'FontSize',20)
 ylabel('E(t)');
+legend('Trial 1','Trial 2', 'Trial 3');
 saveas(gcf,'pic\tracertest','epsc')
 saveas(gcf,'pic\tracertest','png')
-legend('Trial 1','Trial 2', 'Trial 3');
+
+Error=(ett1(1:min([length(theta1),length(theta2),length(theta3)]))+ett2(1:min([length(theta1),length(theta2),length(theta3)]))+ett3(1:min(([length(theta1),length(theta2),length(theta3)]))))/3
+figure
+plot(1:min([length(theta1),length(theta2),length(theta3)]),Error)
 
 T3=table([Tavg(4,:)';mean(Tavg(4,:))],[TVar(4,:)';mean(TVar(4,:))],'VariableNames',{'Mean Residence Time','Variance'})
 writetable(T3,'test.xlsx','Sheet',3);
