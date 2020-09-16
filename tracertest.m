@@ -38,24 +38,22 @@ plot(time2,conf2,'LineWidth',2.5);
 plot(time3,conf3,'LineWidth',2.5);
 title('RTD Trial Comparison','FontSize',20);
 xlabel({'Time(hrs)'},'FontSize',20)
-ylabel('E(t)');
+ylabel('Conductivity(\mu S)');
 legend('Trial 1','Trial 2', 'Trial 3');
 saveas(gcf,'pic\tracertest','epsc')
 saveas(gcf,'pic\tracertest','png')
 
 minlen=min([length(time1),length(time2),length(time3)]);
 meanval=(conf1(1:minlen)+conf2(1:minlen)+conf3(1:minlen))/3
-Range=max([conf1(1:minlen)';conf2(1:minlen)';conf3(1:minlen)'])-min([conf1(1:minlen)';conf2(1:minlen)';conf3(1:minlen)']);
-dx=Range/2
-dxavg=dx/sqrt(3)
+avgd=(abs(conf1(1:minlen)-meanval)+abs(conf2(1:minlen)-meanval)+abs(conf3(1:minlen)-meanval))/3
 figure
 hold on;
 plot(time1,meanval,'LineWidth',2.5);
-plot(time1,meanval+dxavg','LineWidth',2.5);
-plot(time1,meanval-dxavg','LineWidth',2.5);
+plot(time1,meanval+avgd,'LineWidth',2.5);
+plot(time1,meanval-avgd,'LineWidth',2.5);
 title('Error Analysis','FontSize',20);
 xlabel({'Time(hrs)'},'FontSize',20)
-ylabel('E(t)');
+ylabel('Conductivity(\mu S)');
 legend('Mean','Upper bound', 'Lower bound');
 saveas(gcf,'pic\erroran','epsc')
 saveas(gcf,'pic\erroran','png')
