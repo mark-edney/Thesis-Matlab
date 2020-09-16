@@ -111,7 +111,7 @@ yd2=dispop(0:0.01:4,d',1);
 plot(0:0.01:4,yd2,'LineWidth',2.5);
 set(gca,'YTick',[])
 set(gca,'XTick',[])
-title('Open Vessel Disperssion','FontSize',20)
+title('Open Vessel Dispersion','FontSize',20)
 xlabel({'Time'},'FontSize',20)
 ylabel({'E(t)'},'FontSize',20)
 string1=sprintf('D=%0.2d',d(1));
@@ -251,8 +251,9 @@ fitplot(2).LineWidth=2.5;
 title('Conductivity for Sensor #4','FontSize',20)
 xlabel({'Time(hr)'},'FontSize',20)
 ylabel({'Conductivity($\mu$ S)'},'Interpreter','Latex','FontSize',20)
-saveas(gcf,'pic\sample_lm','epsc')
-saveas(gcf,'pic\sample_lm','png')
+legend("RTD","Data","Fit","Confidence bounds (95%)");
+saveas(gcf,'pic\sample_lm','epsc');
+saveas(gcf,'pic\sample_lm','png');
 
 figure;
 plot(time,conf(:,4),'LineWidth',2.5)
