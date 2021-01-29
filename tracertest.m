@@ -36,23 +36,35 @@ hold on;
 plot(time1,conf1,'LineWidth',2.5);
 plot(time2,conf2,'LineWidth',2.5);
 plot(time3,conf3,'LineWidth',2.5);
-title('RTD Trial Comparision','FontSize',20);
+title('RTD Trial Comparison','FontSize',20);
 xlabel({'Time(hrs)'},'FontSize',20)
-ylabel('E(t)');
+ylabel('Conductivity(\mu S)');
 legend('Trial 1','Trial 2', 'Trial 3');
 saveas(gcf,'pic\tracertest','epsc')
 saveas(gcf,'pic\tracertest','png')
 
-Error=(ett1(1:min([length(theta1),length(theta2),length(theta3)]))+ett2(1:min([length(theta1),length(theta2),length(theta3)]))+ett3(1:min(([length(theta1),length(theta2),length(theta3)]))))/3
+minlen=min([length(time1),length(time2),length(time3)]);
+meanval=(conf1(1:minlen)+conf2(1:minlen)+conf3(1:minlen))/3
+avgd=(abs(conf1(1:minlen)-meanval)+abs(conf2(1:minlen)-meanval)+abs(conf3(1:minlen)-meanval))/3
 figure
-plot(1:min([length(theta1),length(theta2),length(theta3)]),Error)
+hold on;
+plot(time1,meanval,'LineWidth',2.5);
+plot(time1,meanval+avgd,'LineWidth',2.5);
+plot(time1,meanval-avgd,'LineWidth',2.5);
+title('Error Analysis','FontSize',20);
+xlabel({'Time(hrs)'},'FontSize',20)
+ylabel('Conductivity(\mu S)');
+legend('Mean','Upper bound', 'Lower bound');
+saveas(gcf,'pic\erroran','epsc')
+saveas(gcf,'pic\erroran','png')
+
 
 T3=table([Tavg(4,:)';mean(Tavg(4,:))],[TVar(4,:)';mean(TVar(4,:))],'VariableNames',{'Mean Residence Time','Variance'})
 writetable(T3,'test.xlsx','Sheet',3);
 
-rsme(1)=Modeltest(theta1,ett1,ett2(1:length(theta1)));
-rsme(2)=Modeltest(theta1,ett1,ett3(1:length(theta1)));
-rsme(3)=Modeltest(theta2,ett2,ett3(1:length(theta2)));
+rsme(1)=Modeltest(time1,conf1,conf2(1:length(time1)));
+rsme(2)=Modeltest(time1,conf1,conf3(1:length(time1)));
+rsme(3)=Modeltest(time2,conf2,conf3(1:length(time2)));
 
 T4=table(rsme','VariableNames',{'RSME'},'RowNames',{'Trial 1 and 2','Trial 1 and 3','Trial 2 and 3'})
 writetable(T4,'test.xlsx','Sheet',4);
