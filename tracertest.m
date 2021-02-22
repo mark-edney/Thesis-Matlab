@@ -43,28 +43,40 @@ legend('Trial 1','Trial 2', 'Trial 3');
 saveas(gcf,'pic\tracertest','epsc')
 saveas(gcf,'pic\tracertest','png')
 
+%finding the mean values and the 90% condifence interval 
 minlen=min([length(time1),length(time2),length(time3)]);
-meanval=(conf1(1:minlen)+conf2(1:minlen)+conf3(1:minlen))/3
-avgd=(abs(conf1(1:minlen)-meanval)+abs(conf2(1:minlen)-meanval)+abs(conf3(1:minlen)-meanval))/3
+ValMatrix = [conf1(1:minlen),conf2(1:minlen),conf3(1:minlen)]';
+meanval=mean(ValMatrix);
+dev = std(ValMatrix);
+ts = tinv([0.05 .95],2);
+
+%finding the mean residence time and usign the same confidence interval
+meanrt = mean(Tavg(4,:));
+devmrt = std(Tavg(4,:));
+MRT = meanrt + devmrt/sqrt(2)*ts
+
 figure
 hold on;
-plot(time1,meanval,'LineWidth',2.5);
-plot(time1,meanval+avgd,'LineWidth',2.5);
-plot(time1,meanval-avgd,'LineWidth',2.5);
+y1 = meanval+[dev'.*ts(2)/sqrt(3)]';
+y2 = meanval+[dev'.*ts(1)/sqrt(3)]';
+patch([time1' fliplr(time1')], [y1 fliplr(y2)], [.827 .827 .827])
+p1 = plot(time1,meanval,'-o','MarkerSize',5,'MarkerIndices',1:1000:length(time1));
+p2 = plot(time1,y1,'-<','MarkerSize',5,'MarkerIndices',1:1000:length(time1));
+p3 = plot(time1,y2,'->','MarkerSize',5,'MarkerIndices',1:1000:length(time1));
 title('Error Analysis','FontSize',20);
 xlabel({'Time(hrs)'},'FontSize',20)
-ylabel('Conductivity(\mu S)');
-legend('Mean','Upper bound', 'Lower bound');
+ylabel('Conductivity(\mu S)','FontSize',20);
+legend([p1 p2 p3], 'Mean','Upper bound(90%CI)', 'Lower bound(90%CI)');
 saveas(gcf,'pic\erroran','epsc')
 saveas(gcf,'pic\erroran','png')
 
 
-T3=table([Tavg(4,:)';mean(Tavg(4,:))],[TVar(4,:)';mean(TVar(4,:))],'VariableNames',{'Mean Residence Time','Variance'})
+T3=table([Tavg(4,:)';mean(Tavg(4,:))],[TVar(4,:)';mean(TVar(4,:))],'VariableNames',{'Mean Residence Time','Variance'});
 writetable(T3,'test.xlsx','Sheet',3);
 
 rsme(1)=Modeltest(time1,conf1,conf2(1:length(time1)));
 rsme(2)=Modeltest(time1,conf1,conf3(1:length(time1)));
 rsme(3)=Modeltest(time2,conf2,conf3(1:length(time2)));
 
-T4=table(rsme','VariableNames',{'RSME'},'RowNames',{'Trial 1 and 2','Trial 1 and 3','Trial 2 and 3'})
+T4=table(rsme','VariableNames',{'RSME'},'RowNames',{'Trial 1 and 2','Trial 1 and 3','Trial 2 and 3'});
 writetable(T4,'test.xlsx','Sheet',4);

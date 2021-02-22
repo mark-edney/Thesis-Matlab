@@ -1,12 +1,46 @@
 %Program to find the value  H for Holdback and the segregation quantity s
+%Each seperate trial is loaded into memory
 clear;
 close all;
+tic
+i=4;
+
+import9;
+Code;
+conf1=conf(:,i);
+time1=time;
+theta1=theta(:,i);
+ett1=ett(:,i);
+Tavg(:,1)=tavg;
+TVar(:,1)=Var;
+
+import10;
+Code;
+conf2=conf(:,i);
+time2=time;
+theta2=theta(:,i);
+ett2=ett(:,i);
+Tavg(:,2)=tavg;
+TVar(:,2)=Var;
+
 import11;
 Code;
+conf3=conf(:,i);
+time3=time;
+theta3=theta(:,i);
+ett3=ett(:,i);
+Tavg(:,3)=tavg;
+TVar(:,3)=Var;
+
+%the mean values for the curve are found
+minlen=min([length(theta1),length(theta2),length(theta3)]);
+ValMatrix = [ett1(1:minlen),ett2(1:minlen),ett3(1:minlen)]';
+meanval=mean(ValMatrix)';
+theta= theta1(1:minlen);
 
 %finds the f(theta) function
-x=theta(:,4);
-ftt=cumtrapz(x,ett(:,4));
+x=theta;
+ftt=cumtrapz(x,meanval);
 hold on;
 
 %Plot F(theta)
@@ -21,11 +55,12 @@ saveas(gcf,'pic\ft','png')
 
 %finds the holdback H
 figure;
+hold on;
 up=find(x>1);
+up=up(1);
 newx=x(1:up);
 H=trapz(newx,ftt(1:up));
-A=area(newx,ftt(1:up));
-A.FaceColor='cyan';
+A=area(newx,ftt(1:up),'FaceColor','cyan');
 plot(x,ftt,'LineWidth',2.5);
 title('Holdback (H)','FontSize',20);
 xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
@@ -45,7 +80,7 @@ saveas(gcf,'pic\holdback','png')
 cstr=@(x)(1-exp(-x));
 index=abs(cstr(x)-ftt)<0.00001;
 indexnum=find(index);
-R=2296:40243;
+R=indexnum(2):indexnum(3);
 
 figure;
 hold on;
@@ -56,12 +91,12 @@ title('Segregation Quantity (S)','FontSize',20);
 xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
 ylabel('$F(\theta )$','Interpreter','Latex');
 ylim([0 1.15]);
-inBetween = [ftt(R), cstr(x(R))]
-A=fill(x(R),inBetween,'cyan');
+inBetween = [ftt(R), cstr(x(R))];
+fill(x(R),inBetween,'cyan');
 xline(1,'LineWidth',2.5);
 yline(1,'LineWidth',2.5);
 legend('Reactor','CSTR','Segregation (S)','Interpreter','Latex')
-S=-sum(abs(trapz(x(R),cstr(x(R)))-trapz(x(R),ftt(R))))
+S=-sum(abs(trapz(x(R),cstr(x(R)))-trapz(x(R),ftt(R))));
 saveas(gcf,'pic\Segs','epsc')
 saveas(gcf,'pic\Segs','png')
 
@@ -77,16 +112,4 @@ xlim([0 0.5]);
 legend('Reactor','CSTR','Interpreter','Latex')
 saveas(gcf,'pic\Segs2','epsc')
 saveas(gcf,'pic\Segs2','png')
-
-figure;
-diseg=makedist('Gamma','a',1,'b',1)
-y=cdf(diseg,x);
-plot(x,y,'LineWidth',2.5);
-plot(x,cstr(x),'LineWidth',2.5);
-title('Segregation Quantity (S)','FontSize',20);
-xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
-ylabel('$F(\theta )$','Interpreter','Latex');
-ylim([0 1.15])
-xline(1,'LineWidth',2.5);
-yline(1,'LineWidth',2.5);
-legend('Reactor','CSTR','Segregation (S)','Interpreter','Latex')
+toc;

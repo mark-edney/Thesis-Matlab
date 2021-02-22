@@ -4,7 +4,7 @@ V1=10;
 V2=10;
 V3=45;
 %the theoretical residence time 
-t=(V1+V2+V3)/(v1);
+t=(V1+V2+V3)/(v1)
 
 %real MRT from recycle experiment
 tobs=7.0256;
