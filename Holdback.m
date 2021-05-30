@@ -85,17 +85,20 @@ R=indexnum(2):indexnum(3);
 figure;
 hold on;
 
-plot(x,ftt,'LineWidth',2.5);
-plot(x,cstr(x),'LineWidth',2.5);
+wt = 4;
+plot(x,ftt,'LineWidth',wt);
+plot(x,cstr(x),'LineWidth',wt);
 title('Segregation Quantity (S)','FontSize',20);
 xlabel('Dimensionless time($\theta = \frac{time}{\bar{t}_{avg}})$','Interpreter','Latex');
 ylabel('$F(\theta )$','Interpreter','Latex');
 ylim([0 1.15]);
 inBetween = [ftt(R), cstr(x(R))];
 fill(x(R),inBetween,'cyan');
-xline(1,'LineWidth',2.5);
-yline(1,'LineWidth',2.5);
-legend('Reactor','CSTR','Segregation (S)','Interpreter','Latex')
+xline(1,'LineWidth',wt);
+yline(1,'LineWidth',wt);
+plot(x,ftt,'LineWidth',wt,'color', [0,0.45,0.74]);
+plot(x,cstr(x),'LineWidth',wt, 'color', 'red');
+legend('F(t) of Reactor','F(t) of CSTR','Segregation (S)','Interpreter','Latex')
 S=-sum(abs(trapz(x(R),cstr(x(R)))-trapz(x(R),ftt(R))));
 saveas(gcf,'pic\Segs','epsc')
 saveas(gcf,'pic\Segs','png')

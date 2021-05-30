@@ -60,10 +60,10 @@ hold on;
 y1 = meanval+[dev'.*ts(2)/sqrt(3)]';
 y2 = meanval+[dev'.*ts(1)/sqrt(3)]';
 patch([time1' fliplr(time1')], [y1 fliplr(y2)], [.827 .827 .827])
-p1 = plot(time1,meanval,'-o','MarkerSize',5,'MarkerIndices',1:1000:length(time1));
-p2 = plot(time1,y1,'-<','MarkerSize',5,'MarkerIndices',1:1000:length(time1));
-p3 = plot(time1,y2,'->','MarkerSize',5,'MarkerIndices',1:1000:length(time1));
-title('Error Analysis','FontSize',20);
+p1 = plot(time1,meanval,'-o','MarkerSize',5,'MarkerIndices',1:1000:length(time1),'linewidth',1.5);
+p2 = plot(time1,y1,'-<','MarkerSize',5,'MarkerIndices',1:1000:length(time1),'linewidth',1.5);
+p3 = plot(time1,y2,'->','MarkerSize',5,'MarkerIndices',1:1000:length(time1),'linewidth',1.5);
+title('Uncertainty Analysis','FontSize',20);
 xlabel({'Time(hrs)'},'FontSize',20)
 ylabel('Conductivity(\mu S)','FontSize',20);
 legend([p1 p2 p3], 'Mean','Upper bound(90%CI)', 'Lower bound(90%CI)');

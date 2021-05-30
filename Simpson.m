@@ -1,4 +1,4 @@
-%This function finds the integral with the simpsons 3/8 method
+%This function finds the integral with the simpsons 1/3 method
 function [simp]=Simpson(x,y)
     a=x(1);
     b=x(end);
